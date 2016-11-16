@@ -11,7 +11,7 @@ import {HeroService} from './hero.service'
     //templateUrl: 'fileName.component.html'
     template:`
 
-        <h1>{{title}}</title>
+        <h1>{{title}}</h1>
         <h2>My Heroes</h2>
         <ul class="heroes">
             <li *ngFor="let hero of heroes" 
@@ -81,23 +81,18 @@ import {HeroService} from './hero.service'
 
 })
 export class AppComponent implements OnInit  {
-    title= 'Tour of Heroes';
-    heroes:Hero[];
-    selectedHero:Hero;
-
-    getHeroes():void{
-        this.heroService.getHeroes()
-        .then(heroes=>this.heroes= heroes );
-    }
-    
-    onselect(hero:Hero):void{
-        this.selectedHero=hero;
-    }
-
-    constructor ( private heroService:HeroService){}
-
-    ngOnInit():void{
-        this.getHeroes();
-    }
+  title = 'Tour of Heroes';
+  heroes: Hero[];
+  selectedHero: Hero;
+  constructor(private heroService: HeroService) { }
+  getHeroes(): void {
+    this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+  }
+  ngOnInit(): void {
+    this.getHeroes();
+  }
+  onselect(hero: Hero): void {
+    this.selectedHero = hero;
+  }
 }
 
